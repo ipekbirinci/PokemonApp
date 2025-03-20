@@ -30,14 +30,22 @@ lifecycleLivedataKtx = "2.8.7"
 lifecycleViewmodelKtx = "2.8.7"
 materiallist="3.3.0"
 coilversion="2.4.0"
+room = "2.5.1"
+coo="1.6.0"
 
 [libraries]
 
-materialDialog = { group = "com.afollestad.material-dialogs", name = "core", version.ref = "materiallist" }
+
+
+materialDialog = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-reactive", version.ref = "coo" }
 
 coil = { group = "io.coil-kt", name = "coil-compose", version.ref = "coilversion" }
 coilnetwork = { group = "io.coil-kt", name = "coil", version.ref = "coilversion" }
 
+#ROOM
+room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
+room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
+room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
 
 
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }

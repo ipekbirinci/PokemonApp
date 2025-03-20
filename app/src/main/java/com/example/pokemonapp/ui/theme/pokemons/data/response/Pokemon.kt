@@ -1,4 +1,4 @@
-package com.example.pokemonapp.ui.theme.pokemons.data
+package com.example.pokemonapp.ui.theme.pokemons.data.response
 
 
 data class Pokemon(

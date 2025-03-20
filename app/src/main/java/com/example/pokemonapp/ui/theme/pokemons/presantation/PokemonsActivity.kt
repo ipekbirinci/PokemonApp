@@ -14,16 +14,16 @@ import androidx.compose.ui.unit.dp
 import com.example.pokemonapp.R
 import com.example.pokemonapp.base.BaseActivity
 import com.example.pokemonapp.ui.theme.PokemonAppTheme
-import com.example.pokemonapp.ui.theme.pokemons.presantation.PokemonViewModel
 import com.example.pokemonapp.ui.theme.pokemons.presantation.pokemoncards.PokemonCard
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class PokemonsActivity : BaseActivity() {
 
     private val viewModel: PokemonViewModel by viewModels()
 
     @Composable
     override fun ProvideContent() {
-        //val pokemonList by viewModel.pokemonList.collectAsState()
 
         PokemonAppTheme {
             Column {

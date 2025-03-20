@@ -50,6 +50,11 @@ android {
 }
 
 dependencies {
+implementation(libs.materialDialog)
+
+    implementation(libs.room.runtime)
+    implementation(libs.room.ktx)
+    implementation(libs.room.compiler)
 
     implementation (libs.coil)
     implementation (libs.coilnetwork)
