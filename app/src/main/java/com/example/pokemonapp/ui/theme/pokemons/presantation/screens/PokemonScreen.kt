@@ -9,6 +9,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
@@ -25,11 +26,15 @@ import kotlinx.coroutines.launch
 fun PokemonScreen(navController: NavController, viewModel: PokemonViewModel = hiltViewModel()) {
     val pokemonList by viewModel.pokemonList.collectAsState()
     val sheetState = rememberModalBottomSheetState()
+    val openBottomSheet = rememberSaveable { mutableStateOf(false) }
+
     val coroutineScope = rememberCoroutineScope()
     var selectedPokemon by remember { mutableStateOf<Pokemon?>(null) }
 
     Column(
-        modifier = Modifier.fillMaxSize().padding(16.dp)
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp)
     ) {
         Image(
             painter = painterResource(id = R.drawable.ic_logo),
@@ -40,14 +45,6 @@ fun PokemonScreen(navController: NavController, viewModel: PokemonViewModel = hi
                 .padding(bottom = 16.dp)
         )
 
-//        LazyColumn {
-//            items(pokemonList.size) { index ->
-//                val pokemon = pokemonList[index]
-//                PokemonListItem(pokemon = pokemon) {
-//                    navController.navigate("pokemon_detail/${pokemon.name}")
-//                }
-//            }
-//        }
 
         LazyColumn {
             items(pokemonList.size) { index ->
@@ -55,9 +52,10 @@ fun PokemonScreen(navController: NavController, viewModel: PokemonViewModel = hi
 
                 PokemonListItem(
                     pokemon = pokemon,
-                    onClick = { /* On card click */ },
+                    onClick = { /* navigate etcek burdada */ },
                     onBottomSheetClick = {
                         selectedPokemon = pokemon
+                        openBottomSheet.value = true
                         coroutineScope.launch { sheetState.show() }
                     },
                     onDetailClick = { name, url, description ->
@@ -70,21 +68,22 @@ fun PokemonScreen(navController: NavController, viewModel: PokemonViewModel = hi
         }
 
 
-
-//        ModalBottomSheet(
-//            sheetState = sheetState,
-//            onDismissRequest = { coroutineScope.launch { sheetState.hide() } }
-//        ) {
-//            selectedPokemon?.let { pokemon ->
-//                BottomSheetContent(
-//                    pokemonName = pokemon.name ?: "No Name",
-//                    pokemonDesc = pokemon.description ?: "No Description"
-//                )
-//            }
-//        }
+        if (openBottomSheet.value) {
+            ModalBottomSheet(
+                sheetState = sheetState,
+                onDismissRequest = { coroutineScope.launch { sheetState.hide() } }
+            ) {
+                selectedPokemon?.let { pokemon ->
+                    BottomSheetContent(
+                        pokemonName = pokemon.name ?: "No Name",
+                        pokemonDesc = pokemon.description ?: "No Description"
+                    )
+                }
+            }
+        }
 
     }
-    }
+}
 
 fun encodeUrlToBase64(url: String): String {
     return Base64.encodeToString(url.toByteArray(), Base64.NO_WRAP)

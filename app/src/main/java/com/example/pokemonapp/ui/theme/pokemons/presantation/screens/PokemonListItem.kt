@@ -20,7 +20,12 @@ import coil.compose.rememberImagePainter
 import com.example.pokemonapp.ui.theme.pokemons.data.response.Pokemon
 
 @Composable
-fun PokemonListItem(pokemon: Pokemon, onClick: () -> Unit, onBottomSheetClick: () -> Unit, onDetailClick: (String, Any?, Any?) -> Unit) {
+fun PokemonListItem(
+    pokemon: Pokemon,
+    onClick: () -> Unit,
+    onBottomSheetClick: () -> Unit,
+    onDetailClick: (String, Any?, Any?) -> Unit
+) {
     Card(
         modifier = Modifier
             .padding(8.dp)
@@ -56,8 +61,15 @@ fun PokemonListItem(pokemon: Pokemon, onClick: () -> Unit, onBottomSheetClick: (
             }
 
             Row {
-                IconButton(onClick = { onBottomSheetClick() }) {
-                    Icon(imageVector = Icons.Default.MoreVert, contentDescription = "Open Bottom Sheet")
+                IconButton(onClick = {
+                    onBottomSheetClick(
+
+                    )
+                }) {
+                    Icon(
+                        imageVector = Icons.Default.MoreVert,
+                        contentDescription = "Open Bottom Sheet"
+                    )
                 }
 
                 IconButton(onClick = {

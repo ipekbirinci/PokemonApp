@@ -13,6 +13,7 @@ abstract class BaseActivity : ComponentActivity() {
             ProvideContent()
         }
     }
+    //belki loading eklenir?
 
     @Composable
     abstract fun ProvideContent()
