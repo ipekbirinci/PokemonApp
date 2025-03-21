@@ -1,6 +1,7 @@
 package com.example.pokemonapp.ui.theme.pokemons.presantation.screens
 
 
+import android.util.Base64
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -60,11 +61,16 @@ fun PokemonScreen(navController: NavController, viewModel: PokemonViewModel = hi
                         coroutineScope.launch { sheetState.show() }
                     },
                     onDetailClick = { name, url, description ->
-                        navController.navigate("pokemon_detail/$name/$url/$description")
+                        val encodedUrl = encodeUrlToBase64(url.toString())
+
+                        navController.navigate("pokemon_detail/$name/$encodedUrl/$description")
                     }
                 )
             }
         }
+
+
+
 //        ModalBottomSheet(
 //            sheetState = sheetState,
 //            onDismissRequest = { coroutineScope.launch { sheetState.hide() } }
@@ -79,4 +85,8 @@ fun PokemonScreen(navController: NavController, viewModel: PokemonViewModel = hi
 
     }
     }
+
+fun encodeUrlToBase64(url: String): String {
+    return Base64.encodeToString(url.toByteArray(), Base64.NO_WRAP)
+}
 

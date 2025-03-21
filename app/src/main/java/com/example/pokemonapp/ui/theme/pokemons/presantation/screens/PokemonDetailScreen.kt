@@ -1,6 +1,7 @@
 package com.example.pokemonapp.ui.theme.pokemons.presantation.screens
 
 
+import android.util.Base64
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
@@ -24,9 +25,10 @@ fun PokemonDetailScreen(pokemonName: String, pokemonImageUrl: String, pokemonDes
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            val painter: Painter = rememberImagePainter(pokemonImageUrl)
+            val decodedUrl = decodeBase64ToUrl(pokemonImageUrl)
+
             Image(
-                painter = painter,
+                painter = rememberImagePainter(decodedUrl),
                 contentDescription = pokemonName,
                 modifier = Modifier
                     .size(150.dp)
@@ -46,4 +48,9 @@ fun PokemonDetailScreen(pokemonName: String, pokemonImageUrl: String, pokemonDes
             )
         }
     }
+}
+
+fun decodeBase64ToUrl(encodedUrl: String): String {
+    val decodedBytes = Base64.decode(encodedUrl, Base64.NO_WRAP)
+    return String(decodedBytes)
 }

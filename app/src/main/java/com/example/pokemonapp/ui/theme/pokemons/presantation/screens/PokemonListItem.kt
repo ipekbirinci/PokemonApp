@@ -1,6 +1,7 @@
 package com.example.pokemonapp.ui.theme.pokemons.presantation.screens
 
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -33,9 +34,10 @@ fun PokemonListItem(pokemon: Pokemon, onClick: () -> Unit, onBottomSheetClick: (
                 .fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            val imageUrl="https:"+pokemon.url
+
+
             Image(
-                painter = rememberImagePainter(imageUrl),
+                painter = rememberImagePainter(pokemon.imageUrl),
                 contentDescription = pokemon.name,
                 modifier = Modifier
                     .size(50.dp)
@@ -59,7 +61,7 @@ fun PokemonListItem(pokemon: Pokemon, onClick: () -> Unit, onBottomSheetClick: (
                 }
 
                 IconButton(onClick = {
-                    pokemon.name?.let { onDetailClick(it, pokemon.url, pokemon.description) }
+                    pokemon.name?.let { onDetailClick(it, pokemon.imageUrl, pokemon.description) }
                 }) {
                     Icon(imageVector = Icons.Default.Info, contentDescription = "Pokemon detail")
                 }
