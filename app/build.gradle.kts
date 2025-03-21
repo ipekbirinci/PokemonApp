@@ -1,4 +1,7 @@
 plugins {
+    alias(libs.plugins.jetbrainsKotlinKsp)
+    alias(libs.plugins.hiltPlugin)
+
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
 }
@@ -45,16 +48,21 @@ android {
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
+            excludes += "/META-INF/gradle/incremental.annotation.processors"
+
         }
     }
 }
-
+configurations.all {
+    exclude(group = "com.intellij", module = "annotations")
+}
 dependencies {
 implementation(libs.materialDialog)
 
     implementation(libs.room.runtime)
     implementation(libs.room.ktx)
     implementation(libs.room.compiler)
+
 
     implementation (libs.coil)
     implementation (libs.coilnetwork)
@@ -65,11 +73,17 @@ implementation(libs.materialDialog)
     implementation(libs.androidx.legacy.support.v4)
     implementation(libs.androidx.lifecycle.livedata.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
-    //ksp(libs.dagger.compiler)
-    //ksp(libs.hilt.compiler)
+    ksp(libs.dagger.compiler)
+    ksp(libs.hilt.compiler)
+    implementation(libs.hilt.compiler)
+
+    // implementation(libs.ext.compiler)
+    implementation(libs.androidx.hilt.navigation.compose)
+
 
 
     implementation(libs.hilt.android)
+    implementation(libs.hilt.navigation.compose)
 
 
 

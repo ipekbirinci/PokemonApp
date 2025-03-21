@@ -1,5 +1,5 @@
 package com.example.pokemonapp.ui.theme.pokemons.data.datasource
-
+/*
 import com.example.pokemonapp.ui.theme.pokemons.data.PokemonApiService
 import com.example.pokemonapp.ui.theme.pokemons.data.response.Pokemon
 import kotlinx.coroutines.flow.Flow
@@ -13,4 +13,4 @@ class PokemonsDataSource @Inject constructor(
     suspend fun getPokemons(): List<Pokemon> {
         return apiService.getPokemons()
     }
-}
+}*/

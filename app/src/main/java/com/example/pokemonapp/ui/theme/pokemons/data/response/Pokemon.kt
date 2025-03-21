@@ -1,10 +1,15 @@
 package com.example.pokemonapp.ui.theme.pokemons.data.response
 
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import com.google.gson.Gson
+
+@Entity
 data class Pokemon(
-    val id: Int,
-    val name: String,
-    val description:String,
-    val imageUrl: String
+    val id: Int?=null,
+    val name: String?=null,
+    val description: String?=null,
+    val url: String?=null
 )
 

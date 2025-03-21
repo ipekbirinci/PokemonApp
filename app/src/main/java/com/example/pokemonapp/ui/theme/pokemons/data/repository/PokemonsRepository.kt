@@ -1,9 +1,14 @@
 package com.example.pokemonapp.ui.theme.pokemons.data.repository
 
+import com.example.pokemonapp.ui.theme.pokemons.data.PokemonApiService
 import com.example.pokemonapp.ui.theme.pokemons.data.response.Pokemon
-import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
 
-
-interface PokemonsRepository {
-    suspend fun getPokemons(): List<Pokemon>
+class PokemonRepository @Inject constructor(
+    private val api: PokemonApiService
+) {
+    suspend fun getPokemonList(): List<Pokemon> {
+        return api.getPokemons()
+    }
 }
+

@@ -27,7 +27,7 @@ class NetworkModule {
     ): Retrofit {
         return Retrofit.Builder()
             .client(okHttp)
-            .baseUrl("https://gist.githubusercontent.com/DavidCorrado/8912aa29d7c4a5fbf03993b32916d601/raw")
+            .baseUrl("https://gist.githubusercontent.com/DavidCorrado/8912aa29d7c4a5fbf03993b32916d601/raw/")
             .addConverterFactory(gsonConverterFactory)
             .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
             .build()
