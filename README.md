@@ -4,17 +4,21 @@ A project that includes below;
 
 ## Structures Ive Used
 
- <br/>Jetpack Compose: <br/> Used to build the entire UI. <br/>
+ Jetpack Compose:  Used to build the entire UI. <br/>
 
- <br/>ViewModel: <br/> Used for business logic and related operations. <br/>
+ ViewModel: Used for business logic and related operations. <br/>
 
- <br/>Retrofit: <br/> Used for API calls. <br/>
+ Retrofit: Used for API calls. <br/>
 
- <br/>Hilt:  <br/>Used for dependency injection. <br/>
+ Hilt:Used for dependency injection. <br/>
 
- <br/>Jetpack Navigation: <br/> Used for navigation between pages. (Version 2.8.0 and above) <br/>
+ Jetpack Navigation:  Used for navigation between pages. (Version 2.8.0 and above) <br/>
 
- <br/>Coroutines: <br/> Used for asynchronous data processing. <br/>
+ Coroutines:  Used for asynchronous data processing. <br/>
 
 ## Photos of Project
-<img width="330" alt="Screenshot 2024-02-09 at 01 18 12" src="b5d1-2b2a802698e5">
+https://github.com/user-attachments/assets/c1b4e303-b6ea-4c12-9bdf-e184a02ebf9d
+
+![Image](https://github.com/user-attachments/assets/60ee40aa-5f1a-4308-9d99-898db88e8d02)
+![Image](https://github.com/user-attachments/assets/69a5650a-4908-43a8-98e6-fb48639826fb)
+![Image](https://github.com/user-attachments/assets/7ee73ee7-ad4d-4bb5-909b-d14656d8ba4c)
